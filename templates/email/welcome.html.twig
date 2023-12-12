@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% apply inky_to_html|inline_css %}
+<style>
+ body {    
+    background-color: #f3f3f3;    
+} 
+    
+   
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  
+  
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+img{
+    width: 40% ; 
+}
+
+p {}
+h1{
+    text-align: center
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="wrapper">
+    <h1>Event Notification</h1>    
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Event</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Priority</th>
+        </tr>
+    {% for evt in listEvent %}
+        <tr>
+            <td>{{ evt.date }}</td>
+            <td>{{ evt.event }}</td>
+            <td>{{ evt.description }}</td>
+            <td>{{ evt.state }}</td>
+            <td>{{ evt.priority }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <h3>The sum of Event is {{sumConnect}}</h3>
+    <img src="{{ email.image('@images/Alstef-1.png') }}" alt="Logo">
+    
+
+    {% endapply %}
+
+</body>
+</html>

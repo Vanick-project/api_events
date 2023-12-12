@@ -7,14 +7,23 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^2.0",
+        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.17",
         "symfony/console": "5.4.*",
         "symfony/dotenv": "5.4.*",
         "symfony/flex": "^1.17|^2",
         "symfony/framework-bundle": "5.4.*",
+        "symfony/mailer": "5.4.*",
+        "symfony/mailjet-mailer": "5.4.*",
+        "symfony/maker-bundle": "^1.43",
         "symfony/runtime": "5.4.*",
-        "symfony/yaml": "5.4.*"
-    },
-    "require-dev": {
+        "symfony/twig-bundle": "5.4.*",
+        "symfony/yaml": "5.4.*",
+        "twig/cssinliner-extra": "^3.8",
+        "twig/extra-bundle": "^3.8",
+        "twig/inky-extra": "^3.8"
     },
     "config": {
         "allow-plugins": {
