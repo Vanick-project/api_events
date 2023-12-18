@@ -47,7 +47,8 @@ class EventController extends AbstractController
         // Envoi d'email
             //The sender mail is store inside mailer.yaml
             $email = (new TemplatedEmail())
-                ->to('ve0q8wxqe@lists.mailjet.com')//to modify this the mail that send the mail to a list inside mailjet
+                ->from('reporting@alstefgroup.com')
+                ->to(...$emailList)//Add mail inside the text file
                 ->subject('Oracle connection exceeding')
                 ->cc('djamenvanick@gmail.com')
                 ->htmlTemplate('email/welcome.html.twig')// to modify
@@ -58,11 +59,12 @@ class EventController extends AbstractController
                 foreach($ackValue as $value){
                     if($value['ACK']  == NULL || $value['ACK']  == '' )
                         { 
+                            $mailer->send($email);
                             $sqlInsert = "UPDATE connection SET ACK = 'OUI' WHERE ACK IS NULL OR ACK = '' ";
                             $statement = $this->connection->executeQuery($sqlInsert);
                             $value = $statement->fetchOne();
                             // send mail
-                            $mailer->send($email);                            
+                                                        
                             break;
                         } 
                     else return die;
