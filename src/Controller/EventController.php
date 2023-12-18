@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 //use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +24,13 @@ class EventController extends AbstractController
      */
     public function index(MailerInterface $mailer, LoggerInterface $logger): Response
     {
+        $emailList = [];
+        $filePath = $this->getParameter('kernel.project_dir') . '/public/mail.txt';
+        $filesystem = new Filesystem();
+        if ($filesystem->exists($filePath)) {
+            $fileContent = file_get_contents($filePath);
+            $emailList = explode("\n", $fileContent);
+        }    
         try{
             $sql = "select * from event_infos";
         $statement = $this->connection->executeQuery($sql); 
